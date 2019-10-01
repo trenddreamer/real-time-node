@@ -17,5 +17,10 @@ if (args.help || !args.file) {
 
 var hello = require("./helloworld.js");
 
-var contents = hello.say(args.file);
-console.log(contents.toString());
+hello.say(args.file, function(err, contents) {
+  if (err) {
+    console.error("Error: " + err);
+  } else {
+    console.log(contents.toString());
+  }
+});
